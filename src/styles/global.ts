@@ -6,7 +6,8 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    
+
     &:focus {
       outline: none;
       box-shadow: 0 0 0 2px ${({ theme }) => rgba(theme.primary, 0.2)}
@@ -14,7 +15,8 @@ export const GlobalStyles = createGlobalStyle`
   }
   body {
     background: ${({ theme }) => theme.background};
-    color: ${({ theme }) => theme.text}
+    color: ${({ theme }) => theme.text};
+    font-family: 'Poppins', sans-serif;
   }
   button {
     cursor: pointer;

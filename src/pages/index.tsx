@@ -1,10 +1,13 @@
+import Challenges from "components/Challenges";
+import Header from "components/Header";
 import type { NextPage } from "next";
 import { HomePageContainer } from "styles/pages/Homepage";
 
 const Home: NextPage = () => {
   return (
     <HomePageContainer>
-      <h1>Home Page</h1>
+      <Header />
+      <Challenges />
     </HomePageContainer>
   );
 };

@@ -49,6 +49,11 @@ export default class MyDocument extends Document {
           />
           <meta charSet="utf-8" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+          <link rel="shortcut icon" href="favicon.png" type="image/png" />
+          <meta property="og:image" content="/ogimage.png" />
+          <meta property="og:image:secure_url" content="/ogimage.png" />
+          <meta name="twitter:image" content="/ogimage.png" />
+          <meta name="twitter:image:src" content="/ogimage.png" />
         </Head>
         <body>
           <Main />

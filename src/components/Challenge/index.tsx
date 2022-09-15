@@ -1,26 +1,36 @@
 import Link from "next/link";
-import { Container, DifficultyTag, H3, P, TagItem, TagsContainer } from "./styles";
+import {
+  Container,
+  DifficultyTag,
+  H3,
+  P,
+  TagItem,
+  TagsContainer,
+} from "./styles";
 import { BiLinkExternal } from "react-icons/bi";
+import { IChallenge } from "interfaces/challenge.interface";
 
-const Challenge = () => {
+interface ChallengeProps {
+  challenge: IChallenge;
+}
+
+const Challenge = ({ challenge }: ChallengeProps) => {
   return (
-    <Link href="/challenges" passHref>
+    <Link href={`/challenges/${challenge.slug}`} passHref>
       <Container>
         <header>
-          <DifficultyTag difficulty="Easy">Easy</DifficultyTag>
+          <DifficultyTag difficulty={challenge.difficulty}>
+            {challenge.difficulty}
+          </DifficultyTag>
           <BiLinkExternal />
         </header>
-        <H3>To do List</H3>
-        <P>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae
-          expedita, ducimus at reprehenderit enim, iure ullam neque repellendus
-          dolor cumque adipisci sequi. Qui, earum eum repellendus voluptate
-          nostrum voluptas cum.
-        </P>
+        <H3>{challenge.title}</H3>
+        <P>{challenge.description}</P>
 
         <TagsContainer>
-            <TagItem>ReactJs</TagItem>
-            <TagItem>Styled</TagItem>
+          {challenge.challengeTags.map((tag) => (
+            <TagItem key={tag.slug}>{tag.name} </TagItem>
+          ))}
         </TagsContainer>
       </Container>
     </Link>

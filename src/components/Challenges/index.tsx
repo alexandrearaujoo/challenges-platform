@@ -1,18 +1,19 @@
 import Challenge from "components/Challenge";
+import { IChallenge } from "interfaces/challenge.interface";
 import { Container, Div } from "./styles";
 
-const Challenges = () => {
+interface ChallengeProps {
+  challenges: IChallenge[];
+}
+
+const Challenges = ({ challenges }: ChallengeProps) => {
   return (
     <Container>
       <h2>All Challenges</h2>
       <Div>
-        <Challenge />
-        <Challenge />
-        <Challenge />
-        <Challenge />
-        <Challenge />
-        <Challenge />
-        <Challenge />
+        {challenges.map((challenge) => (
+          <Challenge key={challenge.id} challenge={challenge} />
+        ))}
       </Div>
     </Container>
   );

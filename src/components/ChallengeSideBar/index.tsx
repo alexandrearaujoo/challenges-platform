@@ -3,15 +3,16 @@ import { useState } from "react";
 import { Container, Content, InstructionsContainer } from "./styles";
 import { BsFillArrowLeftSquareFill } from "react-icons/bs";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { dracula } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import rehypeRaw from "rehype-raw";
 import { useRouter } from "next/router";
 
 interface Props {
   instructions: string;
+  challengeTitle: string;
 }
 
-const ChallengeSideBar = ({ instructions }: Props) => {
+const ChallengeSideBar = ({ instructions, challengeTitle }: Props) => {
   const [isOpen, setIsOpen] = useState<boolean>(true);
 
   const router = useRouter();
@@ -34,7 +35,7 @@ const ChallengeSideBar = ({ instructions }: Props) => {
             <button onClick={goToHome}>back to home</button>
             <button onClick={() => setIsOpen(false)}>hide panel</button>
           </div>
-          <h1>Challenge To do List</h1>
+          <h1>{challengeTitle}</h1>
         </header>
         <InstructionsContainer
           children={instructions}

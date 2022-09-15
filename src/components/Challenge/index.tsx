@@ -9,12 +9,21 @@ import {
 } from "./styles";
 import { BiLinkExternal } from "react-icons/bi";
 import { IChallenge } from "interfaces/challenge.interface";
+import { useRouter } from "next/router";
+import { MouseEvent } from "react";
 
 interface ChallengeProps {
   challenge: IChallenge;
 }
 
 const Challenge = ({ challenge }: ChallengeProps) => {
+  const router = useRouter();
+
+  const navigateToTag = (e: MouseEvent, slug: string) => {
+    e.preventDefault();
+    router.push(`/challenges/tag/${slug}`);
+  };
+
   return (
     <Link href={`/challenges/${challenge.slug}`} passHref>
       <Container>
@@ -29,7 +38,9 @@ const Challenge = ({ challenge }: ChallengeProps) => {
 
         <TagsContainer>
           {challenge.challengeTags.map((tag) => (
-            <TagItem key={tag.slug}>{tag.name} </TagItem>
+            <TagItem key={tag.slug} onClick={(e) => navigateToTag(e, tag.slug)}>
+              {tag.name}{" "}
+            </TagItem>
           ))}
         </TagsContainer>
       </Container>

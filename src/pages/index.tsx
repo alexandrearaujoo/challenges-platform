@@ -25,7 +25,7 @@ const Home: NextPage<HomeProps> = ({ data }) => {
         />
       </Head>
       <Header />
-      <Challenges challenges={data} />
+      <Challenges challenges={data} title="All challenges" />
     </HomePageContainer>
   );
 };
